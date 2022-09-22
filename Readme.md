@@ -1,4 +1,4 @@
-# DockerMysqlNodeAdminer
+# DockerMySqlNodeAdminer
 
 ![APM](https://img.shields.io/apm/l/vim-mode?color=green&label=license&logo=mit&logoColor=mit&style=for-the-badge&logo=appveyor)
 ![Badge](https://img.shields.io/static/v1?label=javascript&message=tools&color=red&flat&logo=PYTHON&style=for-the-badge&logo=appveyor)
@@ -13,7 +13,7 @@
 
 ## Install
 ``` 
-cd DockerMysqlNodeAdminer/
+cd DockerMySqlNodeAdminer/
 docker-compose up -d --build mysql
 docker-compose up -d --build adminer
 docker-compose up --build backend
