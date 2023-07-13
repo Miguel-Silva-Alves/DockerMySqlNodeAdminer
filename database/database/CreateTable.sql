@@ -22,8 +22,3 @@ create table 'table'
 (
   'first name' varchar(30)   
 );
-
-
-
-
--- To

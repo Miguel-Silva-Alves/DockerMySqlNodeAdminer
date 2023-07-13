@@ -19,14 +19,17 @@ describe study.mytable; -- desc mytable;
 
 -- Creating user
 create user 'estevan'@'localhost' identified by 'regiani2004'; -- only connect on local machine
-create user 'estevan'@'%' identified by 'regiani2004'; -- connect from anywhere(except the local machine)
+create user 'estevan_s'@'%' identified by 'regiani2004'; -- connect from anywhere(except the local machine)
 
 -- Adding privileges
-grant select, insert, update on study * to 'estevan'@'localhost';
-grant all on *.* to 'estevan'@'localhost' with grant option;
+grant select, insert, update on study.* to 'estevan'@'localhost';
+grant all on *.* to 'estevan'@'localhost' with grant option; 
 
 --SECTION 2
 --Processlist
+
+-- Essa consulta pode ser útil para identificar processos em execução, monitorar consultas 
+-- em andamento e analisar o desempenho do servidor de banco de dados.
 select * from information_schema.PROCESSLIST order by info desc, time desc;
 
 select id, user, host, db, command,
@@ -38,6 +41,11 @@ from information_schema.PROCESSLIST order by info desc, time desc;
 
 --Stored Procedure Searching
 select * from information_schema.routines where routine_definition like '%word%';
+
+-- CHAPTER 2 
+-- only theoretical
+
+-- CHAPTER 3
 
 
 
