@@ -13,10 +13,10 @@ services:
     image: node-database
     build: ./database
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: RootPassword
-      MYSQL_DATABASE: Company
+      MYSQL_DATABASE: study
   adminer:
     image: adminer
     restart: always

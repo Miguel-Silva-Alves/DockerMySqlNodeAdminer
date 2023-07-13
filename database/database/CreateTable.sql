@@ -4,3 +4,26 @@ CREATE TABLE IF NOT EXISTS products (
   price DECIMAL(10, 2),
   PRIMARY KEY (id)
 );
+
+-- Chapter 1
+
+-- creating a table in MySQL
+create table mytable
+(
+  id           int unsigned not null AUTO_INCREMENT,
+  username     VARCHAR(100) NOT null,
+  email        VARCHAR(100) NOT null,
+
+  primary key (id)
+);
+
+-- Note 
+create table 'table'
+(
+  'first name' varchar(30)   
+);
+
+
+
+
+-- To
