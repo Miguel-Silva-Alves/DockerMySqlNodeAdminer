@@ -22,3 +22,13 @@ create table 'table'
 (
   'first name' varchar(30)   
 );
+
+
+-- Chapter 3 
+
+create table car(
+    car_id int unsigned not null primary key,
+    name varchar(20),
+    price decimal(8,2)
+);
+

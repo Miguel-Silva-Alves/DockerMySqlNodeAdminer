@@ -1,7 +1,7 @@
 INSERT INTO products VALUE(0, 'Curso Front-end especialista', 2500);
 INSERT INTO products VALUE(0, 'Curso JS Fullstack', 900);
 
--- Chapter 1
+-- Chapter 1 // GETTING STARTED WITH MYSQL
 
 --SECTION 1
 -- Inserting a row into a MySQL table
@@ -42,10 +42,21 @@ from information_schema.PROCESSLIST order by info desc, time desc;
 --Stored Procedure Searching
 select * from information_schema.routines where routine_definition like '%word%';
 
--- CHAPTER 2 
--- only theoretical
+-- CHAPTER // 2 DATA TYPES (only theoretical)
 
--- CHAPTER 3
+-- CHAPTER 3 // SELECT
+
+insert into car values (1,'Audi A1', '20000');
+insert into car values (2,'Audi A1', '15000');
+insert into car values (3,'Audi A2', '40000');
+insert into car values (4,'Audi A2', '40000');
+
+select distinct 'name', 'price', from car;
+
+
+
+
+
 
 
 
