@@ -32,3 +32,14 @@ create table car(
     price decimal(8,2)
 );
 
+create table stack(
+    id int AUTO_INCREMENT primary key,
+    username varchar(100) not null
+);
+
+create table students(
+    name varchar(20),
+    percentage int
+);
+
+
