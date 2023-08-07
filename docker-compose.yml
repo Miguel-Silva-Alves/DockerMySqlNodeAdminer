@@ -16,7 +16,7 @@ services:
       - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: RootPassword
-      MYSQL_DATABASE: study
+      MYSQL_DATABASE: study 
   adminer:
     image: adminer
     restart: always

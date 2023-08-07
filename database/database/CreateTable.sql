@@ -43,3 +43,11 @@ create table students(
 );
 
 
+-- Chapter 10
+create table iodku(
+    id int AUTO_INCREMENT not null,
+    name varchar(30) not null,
+    misc int not null,
+    primary key(id),
+    unique(name)
+) engine = InnoDB;

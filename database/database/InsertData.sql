@@ -175,6 +175,8 @@ select group_concat(partition_name) from information_schema.partitions p
 --did not recognize my variable as a variable in that position. I need
 --to contact the value of the variable together with the rest of the
 --query and then execute it as a stmt
+
+-- for to realistic i don't understand very well what this line do
 set @query = concat('create table part_of_partitioned_table (primary key(id))
         select partitioned_table.*
         from partitioned_table partition(', @partitions, ')
@@ -220,6 +222,38 @@ from team_person;
 
 
 -- CHAPTER 10 // INSERT
+
+-- on duplicate key update
+insert into car(car_id, name, price)
+        values (5, 'scort', 120000)
+        on duplicate key update
+        name = 'scortinho',
+        price = values(price);
+
+-- ignoring existing rows
+insert ignore into car (car_id, name) values
+        (2,'Ferrari'),
+        (6,'Jacaré'),
+        (7,'Fusquinha'); 
+
+-- if exists will create a invisible id for the incorect
+--insert and update the right data
+insert into iodku (name, misc)
+        values('Jacareterrivel',157)
+        on duplicate key update 
+        id = last_insert_id(id),
+        misc = values(misc);
+
+--inserting data from another table
+insert into iodku(name, misc)
+        select car.name, car.price
+        from car
+        where car.price <> 20000 and car.price <> 40000
+        order by car.price;
+
+
+
+-- CHAPTER 11 // DELETE
 
 
 
