@@ -254,7 +254,107 @@ insert into iodku(name, misc)
 
 
 -- CHAPTER 11 // DELETE
+insert people(id, name, gender) 
+        values(1,'Katy','f'),
+              (2,'Joao','m'),
+              (3,'Paul','m'),
+              (4,'Estevan','m');
 
+insert pets(ownerId,name,color) values
+                (1,'Rover','beige'),
+                (2,'Bubbles','purple'),
+                (3,'Spot','black and white'),
+                (1,'Rover2','white');
+
+-- Remove only pets
+DELETE p2 FROM pets p2
+        WHERE p2.ownerId in (
+                        SELECT p1.id FROM people p1
+                                WHERE p1.name = 'Paul');
+
+-- Is the same thing that the example above
+DELETE p2 FROM people p1
+        JOIN pets p2 ON p2.ownerId = p1.id
+                WHERE p1.name = 'Paul';
+
+-- Remove pets and the people
+DELETE p1, p2 FROM people p1 
+        JOIN pets p2 ON p2.ownerId = p1.id
+                WHERE p1.name = 'Paul';
+
+-- ON DELETE CASCADE make that the soon lines burned after the father delete
+ALTER TABLE pets ADD CONSTRAINT `fk_pets_2_people` FOREIGN KEY (ownerId) references people(id) ON
+DELETE CASCADE;
+
+-- This will delete all the data and reset AUTO_INCREMENT index.
+TRUNCATE people;
+
+-- Delete only one because i set a limit range of 1
+DELETE FROM car WHERE name = 'Audi A1' LIMIT 1;
+
+
+-- CHAPTER 12 // UPDATE
+
+--basic update
+UPDATE car SET name='luke' WHERE car_id=1;
+
+-- bulk update
+UPDATE people
+        SET name =
+                (CASE id WHEN 1 THEN 'Karl'
+                        WHEN 2 THEN 'Tom'
+                        WHEN 3 THEN 'Mary'
+                END)
+                WHERE id IN (1,2,3);
+
+-- I don't create a table but i put here for rememenber when necessary
+/*
+
+Syntax for the MySQL UPDATE with ORDER BY and LIMIT is,
+UPDATE [ LOW_PRIORITY ] [ IGNORE ] tableName
+        SET column1 = expression1,
+            column2 = expression2,
+...
+                [WHERE conditions]
+                        [ORDER BY expression [ ASC | DESC ]]
+                                [LIMIT row_count];
+
+-- multiple table update example but this too don't have example
+UPDATE products, salesOrders
+        SET salesOrders.Quantity = salesOrders.Quantity - 5,
+        products.availableStock = products.availableStock + 5
+                WHERE products.productId = salesOrders.productId
+                        AND salesOrders.orderId = 100 AND salesOrders.productId = 20;
+
+
+
+
+-- CHAPTER 13 // ORDER BY
+
+-- for default
+SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ... LIMIT ... OFFSET ...;
+( SELECT ... ) UNION ( SELECT ... ) ORDER BY ... -- for ordering the result of the UNION.
+
+Returns the result in the specified order of ids.
+SELECT * FROM some_table WHERE id IN (118, 17, 113, 23, 72)
+        ORDER BY FIELD(id, 118, 17, 113, 23, 72);
+
+*/
+
+-- CHAPTER 14 // GROUP BY
+SELECT ownerId, GROUP_CONCAT(name ORDER BY name desc SEPERATOR ' ') AS pets_name
+FROM pets
+GROUP BY ownerId; -- ERROR 1064 (42000)
+
+-- Number of orders for each customer.
+/*
+SELECT customer, COUNT(*) as orders
+        FROM orders
+                GROUP BY customer
+                ORDER BY customer;
+*/
+
+-- CHAPTER 15 //ERROR 1055
 
 
 

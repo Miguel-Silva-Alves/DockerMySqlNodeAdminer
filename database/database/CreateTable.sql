@@ -51,3 +51,18 @@ create table iodku(
     primary key(id),
     unique(name)
 ) engine = InnoDB;
+
+-- Chapter 11
+create table people(
+    id int primary key,
+    name varchar(100) not null,
+    gender char(1) not null
+);
+
+create table pets( 
+    id int auto_increment primary key,
+    ownerId int not null,
+    name varchar(100) not null,
+    color varchar(100) not null
+);
+
